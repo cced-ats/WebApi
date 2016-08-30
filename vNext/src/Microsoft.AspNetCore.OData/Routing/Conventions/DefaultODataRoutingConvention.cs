@@ -157,7 +157,7 @@ namespace Microsoft.AspNetCore.OData.Routing.Conventions
             foreach (var descriptor in provider.ActionDescriptors.Items.OfType<ControllerActionDescriptor>())
             {
                 if (string.Equals(descriptor.ActionName, methodName, StringComparison.OrdinalIgnoreCase)
-                    && descriptor.ControllerName == controllerName)
+                    && string.Equals(descriptor.ControllerName, controllerName, StringComparison.OrdinalIgnoreCase))
                 {
                     methodDescriptor.Add(descriptor);
                 }
