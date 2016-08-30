@@ -30,6 +30,7 @@ namespace Microsoft.AspNetCore.OData
                     var entityClrType = TypeHelper.GetImplementedIEnumerableType(method.ReturnType) ?? method.ReturnType;
                     ProcedureConfiguration configuration = null;
                     PrimitiveTypeConfiguration primitiveEntityType = null;
+                    ComplexTypeConfiguration complexType = null;
                     EntityTypeConfiguration entityType = null;
 
                     if (entityClrType.GetTypeInfo().IsPrimitive
@@ -37,6 +38,10 @@ namespace Microsoft.AspNetCore.OData
                                || entityClrType.GetType() == typeof(string))
                     {
                         primitiveEntityType = builder.AddPrimitiveType(entityClrType);
+                    }
+                    else if (entityClrType.GetCustomAttribute<System.ComponentModel.DataAnnotations.Schema.ComplexTypeAttribute>() != null)
+                    {
+                        complexType = builder.AddComplexType(entityClrType);
                     }
                     else
                     {
@@ -65,13 +70,17 @@ namespace Microsoft.AspNetCore.OData
 
                     if (configuration != null)
                     {
-                        if (primitiveEntityType == null)
+                        if (primitiveEntityType != null)
                         {
-                            configuration.ReturnType = entityType;
+                            configuration.ReturnType = primitiveEntityType;
+                        }
+                        else if (complexType != null)
+                        {
+                            configuration.ReturnType = complexType;
                         }
                         else
                         {
-                            configuration.ReturnType = primitiveEntityType;
+                            configuration.ReturnType = entityType;
                         }
 
                         configuration.IsComposable = true;
