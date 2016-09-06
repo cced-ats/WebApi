@@ -1,14 +1,14 @@
-﻿using System;
+﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
+// Licensed under the MIT License.  See License.txt in the project root for license information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.OData.Common;
 using Microsoft.AspNetCore.OData.Extensions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.OData.Core;
 using Microsoft.OData.Core.UriParser;
-using Microsoft.OData.Edm;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Globalization;
 
 namespace Microsoft.AspNetCore.OData.Query
@@ -78,6 +78,9 @@ namespace Microsoft.AspNetCore.OData.Query
         /// </summary>
         public OrderByQueryOption OrderBy { get; private set; }
 
+        /// <summary>
+        /// Gets the <see cref="SelectExpandQueryOption"/>.
+        /// </summary>
         public SelectExpandQueryOption SelectExpand { get; private set; }
 
         /// <summary>

@@ -1,6 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.AspNetCore.OData.Common;
 using Microsoft.AspNetCore.OData.Query.Expressions;
 using Microsoft.AspNetCore.OData.Query.Validators;
@@ -8,12 +13,6 @@ using Microsoft.OData.Core;
 using Microsoft.OData.Core.UriParser;
 using Microsoft.OData.Core.UriParser.Semantic;
 using Microsoft.OData.Edm;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Microsoft.AspNetCore.OData.Query
 {
@@ -238,7 +237,6 @@ namespace Microsoft.AspNetCore.OData.Query
                 alreadyOrdered);
             return querySoFar;
         }
-
 
         private OrderByClause TranslateParameterAlias(OrderByClause orderBy)
         {

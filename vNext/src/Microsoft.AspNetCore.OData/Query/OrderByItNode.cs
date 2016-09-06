@@ -19,5 +19,4 @@ namespace Microsoft.AspNetCore.OData.Query
         {
         }
     }
-
 }

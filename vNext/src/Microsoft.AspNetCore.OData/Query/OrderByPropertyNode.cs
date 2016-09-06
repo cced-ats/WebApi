@@ -6,10 +6,6 @@ using Microsoft.OData.Core;
 using Microsoft.OData.Core.UriParser;
 using Microsoft.OData.Core.UriParser.Semantic;
 using Microsoft.OData.Edm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Microsoft.AspNetCore.OData.Query
 {
@@ -66,5 +62,4 @@ namespace Microsoft.AspNetCore.OData.Query
         /// </summary>
         public IEdmProperty Property { get; private set; }
     }
-
 }
